@@ -23,7 +23,6 @@ namespace AzureStorageLib
            PartitionKey = empID.ToString();
            RowKey = empName;
        }
-
-
+       
     }
 }
