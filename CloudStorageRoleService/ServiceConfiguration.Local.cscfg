@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="CloudStorageRoleService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="StorageRoleService">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureStorageAccount" value="DefaultEndpointsProtocol=https;AccountName=csdev;AccountKey=F1fj+WMuOTz7o9xDE4I8ybSZwCm/kMVX/LzGyaaX1TCzpuDi8zlpPTTUl66zBTPzohPr/jU4MWmQROkzDJ3xpw==" />
+      <Setting name="primarykey" value="F1fj+WMuOTz7o9xDE4I8ybSZwCm/kMVX/LzGyaaX1TCzpuDi8zlpPTTUl66zBTPzohPr/jU4MWmQROkzDJ3xpw==" />
+      <Setting name="secondarykey" value="mDsDBS208cPWY+vCBVkGYC1YpHAK3DagpoTt8TeuE2SLqY34Z/wA8qhMKHScbtT/Nbq7PIWYUl/4WIzsle13fA==" />
+      <Setting name="LocalStorage" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
