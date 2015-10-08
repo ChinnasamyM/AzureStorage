@@ -42,6 +42,7 @@ namespace AzureStorageLib
             CloudTableClient tableClient = StorageAccount().CreateCloudTableClient();
             CloudTable storageTable = tableClient.GetTableReference("DevTest");
             storageTable.CreateIfNotExists();
+            storageTable.Execute(storageTblQuery);
 
             
         }
