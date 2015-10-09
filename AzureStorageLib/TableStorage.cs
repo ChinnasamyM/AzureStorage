@@ -35,17 +35,25 @@ namespace AzureStorageLib
             return isDebug;
         }
 
-        protected void AzureTableQuery()
+        public void AzureTableQuery()
         {
-            EmployeeEntity empEntity = new EmployeeEntity(1,"Name 1",54321.456);
+            EmployeeEntity empEntity = new EmployeeEntity(1,"Name  1",54321.456);
             TableOperation storageTblQuery = TableOperation.Insert(empEntity);
             CloudTableClient tableClient = StorageAccount().CreateCloudTableClient();
             CloudTable storageTable = tableClient.GetTableReference("DevTest");
             storageTable.CreateIfNotExists();
-            storageTable.Execute(storageTblQuery);
-
-            
+            storageTable.Execute(storageTblQuery);                        
         }
 
+        public void AzureTableRetriveQuery()
+        {
+            CloudTableClient tableClient = StorageAccount().CreateCloudTableClient();
+            CloudTable storageTable = tableClient.GetTableReference("DevTest");
+            EmployeeEntity empEntity = new EmployeeEntity();
+            TableOperation tableOperation = TableOperation.Retrieve<EmployeeEntity>("1", "Name 1");
+
+            TableResult tableResult = storageTable.Execute(tableOperation);
+            empEntity=tableResult.Result as EmployeeEntity; 
+        }
     }
 }
