@@ -37,12 +37,17 @@ namespace AzureStorageLib
 
         public void AzureTableQuery()
         {
-            EmployeeEntity empEntity = new EmployeeEntity(1,"Name  1",54321.456);
+            EmployeeEntity empEntity = new EmployeeEntity(2,"Name-2");
+            empEntity.empID = 2;
+            empEntity.empName = "Name-2";
+            empEntity.empSalary = 54321.67;
+
             TableOperation storageTblQuery = TableOperation.Insert(empEntity);
             CloudTableClient tableClient = StorageAccount().CreateCloudTableClient();
             CloudTable storageTable = tableClient.GetTableReference("DevTest");
             storageTable.CreateIfNotExists();
-            storageTable.Execute(storageTblQuery);                        
+            storageTable.Execute(storageTblQuery);
+            string uri = storageTable.Uri.ToString();
         }
 
         public void AzureTableRetriveQuery()
@@ -50,10 +55,11 @@ namespace AzureStorageLib
             CloudTableClient tableClient = StorageAccount().CreateCloudTableClient();
             CloudTable storageTable = tableClient.GetTableReference("DevTest");
             EmployeeEntity empEntity = new EmployeeEntity();
-            TableOperation tableOperation = TableOperation.Retrieve<EmployeeEntity>("1", "Name 1");
+            TableOperation tableOperation = TableOperation.Retrieve<EmployeeEntity>("2", "Name-2");
 
             TableResult tableResult = storageTable.Execute(tableOperation);
-            empEntity=tableResult.Result as EmployeeEntity; 
+            empEntity=tableResult.Result as EmployeeEntity;
+            var emp = ((EmployeeEntity)tableResult.Result).empSalary;
         }
     }
 }

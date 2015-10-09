@@ -18,5 +18,12 @@
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />
     </Endpoints>
+    <LocalResources>
+      <LocalStorage name="LocalStorageImage" cleanOnRoleRecycle="true" sizeInMB="15" />
+      <LocalStorage name="DiagnosticStore" sizeInMB="20000" cleanOnRoleRecycle="false" />
+    </LocalResources>
+    <Imports>
+      <Import moduleName="Caching" />
+    </Imports>
   </WebRole>
 </ServiceDefinition>

@@ -9,20 +9,18 @@ namespace AzureStorageLib
 {
    public class EmployeeEntity:TableEntity
     {
-       private int _empID;
-       private string _empName;
-       private double _empSalary;
-
+       
        public EmployeeEntity() { }
 
-       public EmployeeEntity(int empID, string empName, double empSalary)
+       public EmployeeEntity(int empID, string empName)
        {
-           _empID = empID;
-           _empName = empName;
-           _empSalary = empSalary;
-           PartitionKey = empID.ToString();
-           RowKey = empName;
+           this.PartitionKey = empID.ToString();
+           this.RowKey = empName;
        }
+
+       public int empID { get; set; }
+       public string empName { get; set; }
+       public double empSalary { get; set; }
        
     }
 }
